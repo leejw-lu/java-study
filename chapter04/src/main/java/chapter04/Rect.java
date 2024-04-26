@@ -30,8 +30,8 @@ public class Rect {
 		if (getClass() != obj.getClass())
 			return false;
 		Rect other = (Rect) obj;
-		//return h == other.h && w == other.w;
-		return h * w == other.h * other.w;
+		return h == other.h && w == other.w;
+		//return h * w == other.h * other.w;
 	}
 	
 	
