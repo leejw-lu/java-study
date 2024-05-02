@@ -32,6 +32,7 @@ public class TCPClient {
 			byte[] buffer = new byte[256];
 			int readByteCount = is.read(buffer);
 			if (readByteCount == -1) {
+				// Connection Reset
 				System.out.println("[client] closed by server");
 				return;
 			}
@@ -40,18 +41,18 @@ public class TCPClient {
 			System.out.println("[client] received:" + data);
 			
 		} catch (SocketException e) {
-			System.out.println("[client] suddenly closed by server");
+			System.out.println("[client] Socket Exception: " + e);
 		} catch (IOException e) {
 			System.out.println("[client] error:" + e);
 		} finally {
-			try {
-				if (socket!=null && !socket.isClosed()) {
-					socket.close();
-				}
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				if (socket!=null && !socket.isClosed()) {
+//					socket.close();
+//				}
+//			}
+//			catch (IOException e) {
+//				e.printStackTrace();
+//			}
 		}
 
 		
