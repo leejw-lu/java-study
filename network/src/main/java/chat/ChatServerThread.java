@@ -35,10 +35,6 @@ public class ChatServerThread extends Thread {
 			InetSocketAddress inetRemoteSocketAddress= (InetSocketAddress) socket.getRemoteSocketAddress();
 			String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
 			int remotePort = inetRemoteSocketAddress.getPort();
-			//ChatServer.log("connected by client[" + remoteHostAddress + ":" + remotePort+ "]");
-			
-			//InputStream is = socket.getInputStream();
-			//OutputStream os = socket.getOutputStream();
 			
 			//2. 스트림 얻기
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
@@ -66,8 +62,7 @@ public class ChatServerThread extends Thread {
 				} else {
 					ChatServer.log("에러: 알수없는 요청(" + tokens[0]+ ")" );
 				}
-				
-				//pw.println(request);
+			
 			}
 			
 		} catch(SocketException e) {
@@ -132,7 +127,9 @@ public class ChatServerThread extends Thread {
 
 	private void removeWriter(Writer writer) {
 		// 현재 스레드의 writer를 Write Pool에서 제거한 후, 브로드캐스팅 한다.
-		listWriters.remove(writer);
+		synchronized(listWriters) {
+			listWriters.remove(writer);
+		}
 	}
 	
 }

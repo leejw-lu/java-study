@@ -33,6 +33,15 @@ public class ChatClientThread extends Thread {
 			//ChatClient.log("Socket Exception: " + e);
 		} catch (IOException e) {
 			//ChatClient.log("error: "+ e);
+		} finally {
+			try {
+				if (socket!=null && !socket.isClosed()) {
+					socket.close();
+				}
+
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}

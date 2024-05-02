@@ -58,13 +58,6 @@ public class ChatClient {
 					pw.println("message:"+ input);
 				}
 				
-//				pw.println(line);
-//				String data= br.readLine(); //blocking
-//				if (data==null) {
-//					log("closed by server");
-//					break;
-//				}
-				
 			}
 		} catch (SocketException e) {
 			log("Socket Exception: " + e);
