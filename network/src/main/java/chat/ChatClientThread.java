@@ -22,12 +22,17 @@ public class ChatClientThread extends Thread {
 		try {
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
 			String message;
-			while ((message = br.readLine())!= null) {
+//			while ((message = br.readLine())!= null) {
+//				System.out.println(message);
+//			}
+				
+			while(true) {			//(message = br.readLine())!= null 한번에 쓰기 가능
+				message = br.readLine();
+				if (message==null) {
+					break;
+				}
 				System.out.println(message);
 			}
-			
-//			String message= br.readLine();
-//			System.out.println(message);
 			
 		} catch (SocketException e) {
 			//ChatClient.log("Socket Exception: " + e);

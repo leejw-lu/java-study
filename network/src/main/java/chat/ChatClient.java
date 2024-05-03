@@ -49,7 +49,7 @@ public class ChatClient {
 				//System.out.print(">>");
 				String input = scanner.nextLine();
 				
-				if ("quit".equals(input)==true) {	//==true
+				if ("quit".equals(input)) {	//==true
 					//8. quit 프로토콜 처리
 					pw.println("quit");
 					break;

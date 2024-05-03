@@ -102,7 +102,7 @@ public class ChatServerThread extends Thread {
 		synchronized(listWriters) {
 			for (Writer writer: listWriters) {
 				PrintWriter printWriter= (PrintWriter) writer;
-				printWriter.println(data);
+				printWriter.println(data);	//client로 전송
 				printWriter.flush();
 			}
 		}
