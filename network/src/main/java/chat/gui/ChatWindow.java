@@ -40,6 +40,13 @@ public class ChatWindow {
 		buttonSend = new Button("Send");
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
+		try {
+			this.pw=new PrintWriter(new OutputStreamWriter(socket.getOutputStream() , "utf-8"), true);
+		} catch (UnsupportedEncodingException e) {
+			//e.printStackTrace();
+		} catch (IOException e) {
+			//e.printStackTrace();
+		}
 	}
 
 	public void show() {
@@ -90,8 +97,8 @@ public class ChatWindow {
 	
 	private void sendMessage() {
 		//textField 내역 가져오기 + 보내고 비우기
-		try {
-			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream() , "utf-8"), true);
+		//try {
+			//pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream() , "utf-8"), true);
 			String message= textField.getText();
 			
 			if ("quit".equals(message)) {
@@ -103,11 +110,11 @@ public class ChatWindow {
 			textField.setText("");
 			textField.requestFocus();
 		
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 	

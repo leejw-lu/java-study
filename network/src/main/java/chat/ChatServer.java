@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatServer {
-	public static final int PORT=6017;
+	public static final int PORT=6019;
 	
 	public static void main(String[] args) {
 		// chat 서버 스레드 만들어서 print wirte list 넘기기
